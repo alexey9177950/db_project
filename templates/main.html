@@ -1,0 +1,35 @@
+<html>
+<head>
+    <title> Список тредов </title>
+<style>
+   p {
+    border: 2px solid red;
+    padding: 10px;
+   }
+</style>
+</head>
+<body>
+    <h3> Новый тред </h3>
+
+    <form action="/create_thread">
+        <input type="submit" value="Создать!"><br>
+        Заголовок:<br>
+        <input type="text" name="header"><br>
+        Текст:<br>
+        <textarea rows="10" cols="45" name="msg_text"></textarea>
+    </form>
+
+    <hr>
+
+    <h2> Треды </h2>
+
+    {% for t_id, op_msg, header in data %}
+        <h4><a href="/thread?t_id={{t_id}}">
+            {{header}}
+        </a></h4>
+        <p> {{op_msg}} </p>
+    {% endfor %}
+    
+    <hr>   
+</body>
+</html>
